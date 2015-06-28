@@ -10,6 +10,7 @@
         http://www.springframework.org/schema/util    http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<context:annotation-config />
+	<context:component-scan base-package="cl.experti.admission.webapp.service" />
 
 	<bean id="admissionWebServicesPropertyPlaceHolder"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
