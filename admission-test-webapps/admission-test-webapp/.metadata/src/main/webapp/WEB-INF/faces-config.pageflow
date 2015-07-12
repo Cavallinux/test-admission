@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14309234462930" configfile="/admission-test-webapp/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="754" id="pf14309235115348" referenceLink="//@navigationRule.1/@fromViewId|" path="*"/>
-</pageflow:Pageflow>
