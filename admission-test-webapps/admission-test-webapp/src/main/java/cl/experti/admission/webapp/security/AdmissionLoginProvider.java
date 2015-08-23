@@ -15,28 +15,28 @@ import cl.experti.admission.webapp.service.login.UserLoginService;
 
 @Service("admissionLoginProvider")
 public class AdmissionLoginProvider extends AbstractUserDetailsAuthenticationProvider {
-    @Resource(name = "loginService")
-    private UserLoginService loginService;
-    private static Logger logger;
-    
-    static {
-	logger = LoggerFactory.getLogger(AdmissionLoginProvider.class);
-    }
-    
-    @PostConstruct
-    public void init() {
-	setHideUserNotFoundExceptions(false);
-    }
+	@Resource(name = "loginService")
+	private UserLoginService loginService;
+	private static Logger logger;
 
-    @Override
-    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) {
-	logger.debug("TO-DO Method");
-    }
+	static {
+		logger = LoggerFactory.getLogger(AdmissionLoginProvider.class);
+	}
 
-    @Override
-    protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-	String password = authentication.getCredentials().toString();
-	UserDetails userDetails = loginService.loginUser(username, password);
-	return userDetails;
-    }
+	@PostConstruct
+	public void init() {
+		setHideUserNotFoundExceptions(false);
+	}
+
+	@Override
+	protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) {
+		logger.debug("TO-DO Method");
+	}
+
+	@Override
+	protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+		String password = authentication.getCredentials().toString();
+		UserDetails userDetails = loginService.loginUser(username, password);
+		return userDetails;
+	}
 }

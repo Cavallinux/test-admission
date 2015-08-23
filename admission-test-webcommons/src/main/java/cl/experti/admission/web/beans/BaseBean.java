@@ -53,15 +53,15 @@ public class BaseBean implements java.io.Serializable {
         return (HttpSession) getFacesContext().getExternalContext().getSession(true);
     }
     
-    @SuppressWarnings("unchecked")
-    protected <T extends ServletRequest> T getRequest() {
-	ExternalContext context = getExternalContext();
-	return (T) context.getRequest();
-    }
-    
-    @SuppressWarnings("unchecked")
-    protected <T extends ServletResponse> T getResponse() {
-	ExternalContext context = getExternalContext();
-	return (T) context.getResponse();
-    }
+	@SuppressWarnings("unchecked")
+	protected <T extends ServletRequest> T getRequest() {
+		ExternalContext context = getExternalContext();
+		return (T) context.getRequest();
+	}
+
+	@SuppressWarnings("unchecked")
+	protected <T extends ServletResponse> T getResponse() {
+		ExternalContext context = getExternalContext();
+		return (T) context.getResponse();
+	}
 }

@@ -7,10 +7,9 @@ import org.springframework.security.core.userdetails.User;
 
 public class AdmissionUser extends User {
 
-    public AdmissionUser(String username, String password, boolean enabled,
-	    boolean accountNonExpired, boolean credentialsNonExpired,
-	    boolean accountNonLocked,
-	    Collection<? extends GrantedAuthority> authorities) {
-	super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-    }
+	public AdmissionUser(String username, String password, boolean enabled, boolean accountNonExpired,
+			boolean credentialsNonExpired, boolean accountNonLocked,
+			Collection<? extends GrantedAuthority> authorities) {
+		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+	}
 }

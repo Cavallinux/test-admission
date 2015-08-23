@@ -18,40 +18,40 @@ import cl.experti.admission.ws.services.CheckUserLoginService;
 
 @Service("checkLoginService")
 public class CheckUserLoginServiceImpl implements CheckUserLoginService {
-    @Resource(name = "userNames")
-    private Properties users;
-    private static Logger logger;
-    
-    static {
-	logger = LoggerFactory.getLogger(CheckUserLoginServiceImpl.class);
-    }
+	@Resource(name = "userNames")
+	private Properties users;
+	private static Logger logger;
 
-    @Override
-    public LoginResponse checkLoginService(LoginRequest request) {
-	LoginResponse loginResponse = new LoginResponse();
-	
-	boolean existsUser = users.containsKey(request.getUserName());
-	logger.debug("Exists user? {}", existsUser);
-	
-	if (existsUser) {
-	    boolean passwordMatches = StringUtils.equals(request.getPassword(), (String) users.get(request.getUserName()));
-	    logger.debug("Password matches? {}", passwordMatches);
-	    
-	    if (passwordMatches) {
-		loginResponse.setLoginResponseCode(new BigDecimal(0));
-		loginResponse.setLoginResponseMessage("Logged successfully");
-		List<String> userRoles = new ArrayList<>();
-		userRoles.add("AdmissionWebapp");
-		loginResponse.setUserRoles(userRoles);
-	    } else {
-		loginResponse.setLoginResponseCode(new BigDecimal(2));
-		loginResponse.setLoginResponseMessage("Password do not matches");
-	    }
-	} else {
-	    loginResponse.setLoginResponseCode(new BigDecimal(1));
-	    loginResponse.setLoginResponseMessage("User not found");
+	static {
+		logger = LoggerFactory.getLogger(CheckUserLoginServiceImpl.class);
 	}
-	
-	return loginResponse;
-    }
+
+	@Override
+	public LoginResponse checkLoginService(LoginRequest request) {
+		LoginResponse loginResponse = new LoginResponse();
+
+		boolean existsUser = users.containsKey(request.getUserName());
+		logger.debug("Exists user? {}", existsUser);
+
+		if (existsUser) {
+			boolean passwordMatches = StringUtils.equals(request.getPassword(), (String) users.get(request.getUserName()));
+			logger.debug("Password matches? {}", passwordMatches);
+
+			if (passwordMatches) {
+				loginResponse.setLoginResponseCode(new BigDecimal(0));
+				loginResponse.setLoginResponseMessage("Logged successfully");
+				List<String> userRoles = new ArrayList<>();
+				userRoles.add("AdmissionWebapp");
+				loginResponse.setUserRoles(userRoles);
+			} else {
+				loginResponse.setLoginResponseCode(new BigDecimal(2));
+				loginResponse.setLoginResponseMessage("Password do not matches");
+			}
+		} else {
+			loginResponse.setLoginResponseCode(new BigDecimal(1));
+			loginResponse.setLoginResponseMessage("User not found");
+		}
+
+		return loginResponse;
+	}
 }
