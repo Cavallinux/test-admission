@@ -11,7 +11,7 @@
     <!-- Spring context location -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:admission-webapp-appcontext.xml,classpath:admission-webapp-securitycontext.xml,classpath:admission-webapp-wscontext.xml,classpath:admission-webapp-webcontext.xml</param-value>
+        <param-value>classpath:admission-webapp-placeholder-context.xml,classpath:admission-webapp-appcontext.xml,classpath:admission-webapp-securitycontext.xml,classpath:admission-webapp-wscontext.xml,classpath:admission-webapp-webcontext.xml</param-value>
     </context-param>
     
 

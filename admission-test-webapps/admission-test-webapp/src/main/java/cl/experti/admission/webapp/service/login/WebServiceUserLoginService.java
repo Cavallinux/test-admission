@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.AuthenticationException;
@@ -26,6 +30,18 @@ import cl.experti.admission.ws.login.UserLoginResponse;
 public class WebServiceUserLoginService implements UserLoginService {
 	@Resource(name = "loginServiceClient")
 	private cl.experti.admission.ws.login.LoginService loginService;
+	@Value("${property.name}")
+	private String property;
+	private static Logger logger;
+	
+	static{
+		logger = LoggerFactory.getLogger(WebServiceUserLoginService.class);
+	}
+	
+	@PostConstruct
+	public void onPostConstruct() {
+		logger.debug("Property value: {}", property);
+	}
 
 	@Override
 	public UserDetails loginUser(String userName, String password) throws AuthenticationException {

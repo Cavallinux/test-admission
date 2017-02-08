@@ -10,20 +10,6 @@
         http://www.springframework.org/schema/util    http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<context:annotation-config />
-
-    <bean id="webPlaceHolder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="ignoreResourceNotFound" value="true" />
-        <property name="ignoreUnresolvablePlaceholders" value="true" />
-        <property name="systemPropertiesMode" value="2" />
-        <property name="locations">
-            <list>
-                <value>classpath:admission-webapp.properties</value>
-                <value>file:${user.home}${file.separator}.experti${file.separator}admission.properties</value>
-            </list>
-        </property>
-    </bean>
-    
-    <context:annotation-config />
     <context:component-scan base-package="cl.experti.admission.webapp.*" />
     
     <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
